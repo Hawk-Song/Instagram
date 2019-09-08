@@ -10,9 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    let plusPhotoButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .red
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        view.addSubview(plusPhotoButton)
     }
 
 
