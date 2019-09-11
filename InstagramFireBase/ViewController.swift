@@ -9,14 +9,35 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
     let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
+        button.addTarget(self, action: #selector(handlePlusPhoto), for: .touchUpInside)
         return button
     }()
+    
+    @objc func handlePlusPhoto() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImg = info[.editedImage] as? UIImage {
+            plusPhotoButton.setImage(editedImg.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else if let originalImg = info[.originalImage] as? UIImage {
+            plusPhotoButton.setImage(originalImg.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.layer.borderColor = UIColor.black.cgColor
+        plusPhotoButton.layer.borderWidth = 1
+        dismiss(animated: true, completion: nil)
+    }
     
     let emailTextField: UITextField = {
         let tf = UITextField()
@@ -91,17 +112,30 @@ class ViewController: UIViewController {
             }
             
             print("Successfully created user: ", res?.user.uid ?? "")
-            guard let uid = res?.user.uid else {return}
-            let usernameValues = ["username": username]
-            let values = [uid: usernameValues]
-            Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: {
-                (err, ref) in
-                
+            guard let image = self.plusPhotoButton.imageView?.image else {return}
+            guard let uploadData = image.jpegData(compressionQuality: 0.3) else {return}
+            let filename = NSUUID().uuidString
+            Storage.storage().reference().child("profile_image").child(filename).putData(uploadData, metadata: nil, completion: { (metadata, err) in
                 if let err = err {
-                    print("Failed to save user info into db:", err)
+                    print("Failed to upload profile image: ", err)
                     return
                 }
-                print("Successfully saved user info into db")
+                
+                guard let profileImageUrl = metadata?.dictionaryRepresentation()["mediaLink"] as? String else {return}
+                print("successfully uploaded profile image")
+                
+                guard let uid = res?.user.uid else {return}
+                let usernameValues = ["username": username, "profileImageUrl": profileImageUrl]
+                let values = [uid: usernameValues]
+                Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: {
+                    (err, ref) in
+                    
+                    if let err = err {
+                        print("Failed to save user info into db:", err)
+                        return
+                    }
+                    print("Successfully saved user info into db")
+                })
             })
         }
     }
