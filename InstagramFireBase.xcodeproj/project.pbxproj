@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,8 @@
 		1458D17B232606CC0044E422 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1458D17A232606CC0044E422 /* UIColor+Extension.swift */; };
 		1458D17D23260C090044E422 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1458D17C23260C090044E422 /* View+Extension.swift */; };
 		1458D17F23260D360044E422 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1458D17E23260D360044E422 /* GoogleService-Info.plist */; };
+		14C276C1232A0A2200D2E3F1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C276C0232A0A2200D2E3F1 /* MainTabBarController.swift */; };
+		14C276C3232A0C8100D2E3F1 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C276C2232A0C8100D2E3F1 /* UserProfileController.swift */; };
 		41C2F23D12FD5EF683793964 /* Pods_InstagramFireBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE05053C73761C4E00B4239 /* Pods_InstagramFireBase.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,8 @@
 		1458D17A232606CC0044E422 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		1458D17C23260C090044E422 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		1458D17E23260D360044E422 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		14C276C0232A0A2200D2E3F1 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		14C276C2232A0C8100D2E3F1 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		7CE05053C73761C4E00B4239 /* Pods_InstagramFireBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramFireBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9BD84226D7D3E985FF7CEE /* Pods-InstagramFireBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramFireBase.release.xcconfig"; path = "Target Support Files/Pods-InstagramFireBase/Pods-InstagramFireBase.release.xcconfig"; sourceTree = "<group>"; };
 		D55F870E3CB4180547774332 /* Pods-InstagramFireBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramFireBase.debug.xcconfig"; path = "Target Support Files/Pods-InstagramFireBase/Pods-InstagramFireBase.debug.xcconfig"; sourceTree = "<group>"; };
@@ -67,11 +71,13 @@
 			children = (
 				1458D177232606970044E422 /* Utils */,
 				1458D1652324D4310044E422 /* AppDelegate.swift */,
+				14C276C0232A0A2200D2E3F1 /* MainTabBarController.swift */,
 				1458D1672324D4310044E422 /* ViewController.swift */,
 				1458D17E23260D360044E422 /* GoogleService-Info.plist */,
 				1458D16C2324D4320044E422 /* Assets.xcassets */,
 				1458D16E2324D4320044E422 /* LaunchScreen.storyboard */,
 				1458D1712324D4320044E422 /* Info.plist */,
+				14C276C2232A0C8100D2E3F1 /* UserProfileController.swift */,
 			);
 			path = InstagramFireBase;
 			sourceTree = "<group>";
@@ -91,7 +97,6 @@
 				D55F870E3CB4180547774332 /* Pods-InstagramFireBase.debug.xcconfig */,
 				CF9BD84226D7D3E985FF7CEE /* Pods-InstagramFireBase.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -220,6 +225,8 @@
 			files = (
 				1458D17B232606CC0044E422 /* UIColor+Extension.swift in Sources */,
 				1458D1682324D4310044E422 /* ViewController.swift in Sources */,
+				14C276C3232A0C8100D2E3F1 /* UserProfileController.swift in Sources */,
+				14C276C1232A0A2200D2E3F1 /* MainTabBarController.swift in Sources */,
 				1458D17D23260C090044E422 /* View+Extension.swift in Sources */,
 				1458D1662324D4310044E422 /* AppDelegate.swift in Sources */,
 			);
